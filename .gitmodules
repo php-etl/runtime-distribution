@@ -1,0 +1,66 @@
+[submodule "packages/workflow-console-runtime"]
+	path = packages/workflow-console-runtime
+	url = git@github.com:php-etl/workflow-console-runtime.git
+[submodule "packages/workflow"]
+	path = packages/workflow
+	url = git@github.com:php-etl/workflow.git
+[submodule "packages/sql-flow"]
+	path = packages/sql-flow
+	url = git@github.com:php-etl/sql-flow.git
+[submodule "packages/spreadsheet-flow"]
+	path = packages/spreadsheet-flow
+	url = git@github.com:php-etl/spreadsheet-flow.git
+[submodule "packages/react-loop-adapter"]
+	path = packages/react-loop-adapter
+	url = git@github.com:php-etl/react-loop-adapter.git
+[submodule "packages/rabbitmq-flow"]
+	path = packages/rabbitmq-flow
+	url = git@github.com:php-etl/rabbitmq-flow.git
+[submodule "packages/promise-contracts"]
+	path = packages/promise-contracts
+	url = git@github.com:php-etl/promise-contracts.git
+[submodule "packages/promise"]
+	path = packages/promise
+	url = git@github.com:php-etl/promise.git
+[submodule "packages/pipeline-contracts"]
+	path = packages/pipeline-contracts
+	url = git@github.com:php-etl/pipeline-contracts.git
+[submodule "packages/pipeline-console-runtime"]
+	path = packages/pipeline-console-runtime
+	url = git@github.com:php-etl/pipeline-console-runtime.git
+[submodule "packages/pipeline"]
+	path = packages/pipeline
+	url = git@github.com:php-etl/pipeline.git
+[submodule "packages/phpunit-extension"]
+	path = packages/phpunit-extension
+	url = git@github.com:php-etl/phpunit-extension.git
+[submodule "packages/phpspec-extension"]
+	path = packages/phpspec-extension
+	url = git@github.com:php-etl/phpspec-extension.git
+[submodule "packages/metadata-contracts"]
+	path = packages/metadata-contracts
+	url = git@github.com:php-etl/metadata-contracts.git
+[submodule "packages/metadata"]
+	path = packages/metadata
+	url = git@github.com:php-etl/metadata.git
+[submodule "packages/json-flow"]
+	path = packages/json-flow
+	url = git@github.com:php-etl/json-flow.git
+[submodule "packages/hook-runtime"]
+	path = packages/hook-runtime
+	url = git@github.com:php-etl/hook-runtime.git
+[submodule "packages/csv-flow"]
+	path = packages/csv-flow
+	url = git@github.com:php-etl/csv-flow.git
+[submodule "packages/console-state"]
+	path = packages/console-state
+	url = git@github.com:php-etl/console-state.git
+[submodule "packages/bucket-contracts"]
+	path = packages/bucket-contracts
+	url = git@github.com:php-etl/bucket-contracts.git
+[submodule "packages/bucket"]
+	path = packages/bucket
+	url = git@github.com:php-etl/bucket.git
+[submodule "packages/api-runtime"]
+	path = packages/api-runtime
+	url = git@github.com:php-etl/api-runtime.git
