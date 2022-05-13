@@ -1,0 +1,42 @@
+{
+    "name": "php-etl/runtime-distribution",
+    "type": "project",
+    "license": "commercial",
+    "authors": [
+        {
+            "name": "Grégory Planchat",
+            "email": "gregory@kiboko.fr"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./packages/*"
+        }
+    ],
+    "require": {
+        "composer-plugin-api": "^2.1",
+        "php-etl/api-runtime": "^0.1@dev",
+        "php-etl/bucket": "^0.2@dev",
+        "php-etl/bucket-contracts": "^0.1@dev",
+        "php-etl/console-state": "^0.1@dev",
+        "php-etl/csv-flow": "^0.2@dev",
+        "php-etl/hook-runtime": "^0.1@dev",
+        "php-etl/json-flow": "^0.1@dev",
+        "php-etl/metadata": "^0.2@dev",
+        "php-etl/metadata-contracts": "^0.1@dev",
+        "php-etl/phpspec-extension": "^0.2@dev",
+        "php-etl/phpunit-extension": "^0.2@dev",
+        "php-etl/pipeline": "^0.4@dev",
+        "php-etl/pipeline-console-runtime": "@dev",
+        "php-etl/pipeline-contracts": "^0.3@dev",
+        "php-etl/promise": "^1.0@dev",
+        "php-etl/promise-contracts": "^0.1@dev",
+        "php-etl/rabbitmq-flow": "^0.1@dev",
+        "php-etl/react-loop-adapter": "^0.1@dev",
+        "php-etl/spreadsheet-flow": "^0.1@dev",
+        "php-etl/sql-flow": "^0.1@dev",
+        "php-etl/workflow": "^0.1@dev",
+        "php-etl/workflow-console-runtime": "^0.1@dev"
+    }
+}
