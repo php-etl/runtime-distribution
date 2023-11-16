@@ -6,37 +6,118 @@
         {
             "name": "Grégory Planchat",
             "email": "gregory@kiboko.fr"
-        }
-    ],
-    "repositories": [
+        },
         {
-            "type": "path",
-            "url": "./packages/*"
+            "name": "Kiboko SAS",
+            "homepage": "http://kiboko.fr"
         }
     ],
     "require": {
+        "box/spout": "^3.1",
+        "bunny/bunny": "*",
         "composer-plugin-api": "^2.1",
-        "php-etl/api-runtime": "^0.1@dev",
-        "php-etl/bucket": "^0.2@dev",
-        "php-etl/bucket-contracts": "^0.1@dev",
-        "php-etl/console-state": "^0.1@dev",
-        "php-etl/csv-flow": "^0.2@dev",
-        "php-etl/hook-runtime": "^0.1@dev",
-        "php-etl/json-flow": "^0.1@dev",
-        "php-etl/metadata": "^0.2@dev",
-        "php-etl/metadata-contracts": "^0.1@dev",
-        "php-etl/phpspec-extension": "^0.2@dev",
-        "php-etl/phpunit-extension": "^0.2@dev",
-        "php-etl/pipeline": "^0.4@dev",
-        "php-etl/pipeline-console-runtime": "@dev",
-        "php-etl/pipeline-contracts": "^0.3@dev",
-        "php-etl/promise": "^1.0@dev",
-        "php-etl/promise-contracts": "^0.1@dev",
-        "php-etl/rabbitmq-flow": "^0.1@dev",
-        "php-etl/react-loop-adapter": "^0.1@dev",
-        "php-etl/spreadsheet-flow": "^0.1@dev",
-        "php-etl/sql-flow": "^0.1@dev",
-        "php-etl/workflow": "^0.1@dev",
-        "php-etl/workflow-console-runtime": "^0.1@dev"
-    }
+        "doctrine/inflector": "^2.0",
+        "ext-dom": "*",
+        "ext-pdo": "*",
+        "ext-simplexml": "*",
+        "ext-xmlreader": "*",
+        "ext-zip": "*",
+        "fakerphp/faker": "^1.19",
+        "friends-of-phpspec/phpspec-code-coverage": "*",
+        "laminas/laminas-diactoros": "^2.6",
+        "mikey179/vfsstream": "^1.6",
+        "nikic/php-parser": "^4.10",
+        "php": "^8.2",
+        "php-etl/mapping-contracts": "0.4.*",
+        "php-etl/metadata": "*",
+        "php-http/message": "^1.11",
+        "php-http/mock-client": "^1.4@dev",
+        "phpspec/phpspec": "^7.3",
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^10.0",
+        "psr/container": "^1.0",
+        "psr/log": "^3.0",
+        "ramsey/uuid": "^4.2",
+        "symfony/console": "^6.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.38",
+        "infection/infection": "^0.26.18",
+        "phpunit/php-invoker": "^4.0",
+        "rector/rector": "^0.15",
+        "symplify/monorepo-builder": "^11.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kiboko\\Component\\Action\\": "packages/action/src/",
+            "Kiboko\\Component\\Bucket\\": "packages/bucket/src/",
+            "Kiboko\\Component\\Flow\\Csv\\": "packages/csv-flow/src/",
+            "Kiboko\\Component\\Flow\\JSON\\": "packages/json-flow/src/",
+            "Kiboko\\Component\\Flow\\RabbitMQ\\": "packages/rabbitmq-flow/src/",
+            "Kiboko\\Component\\Flow\\SQL\\": "packages/sql-flow/src/",
+            "Kiboko\\Component\\Flow\\Spreadsheet\\": "packages/spreadsheet-flow/src/",
+            "Kiboko\\Component\\PHPSpecExtension\\DataProvider\\": "packages/phpspec-extension/src/DataProvider/",
+            "Kiboko\\Component\\PHPSpecExtension\\FastMap\\": "packages/phpspec-extension/src/FastMap/",
+            "Kiboko\\Component\\PHPSpecExtension\\Metadata\\": "packages/phpspec-extension/src/Metadata/",
+            "Kiboko\\Component\\PHPUnitExtension\\": "packages/phpunit-extension/src/",
+            "Kiboko\\Component\\Pipeline\\": "packages/pipeline/src/",
+            "Kiboko\\Component\\Runtime\\API\\": "packages/api-runtime/src/",
+            "Kiboko\\Component\\Runtime\\Action\\": "packages/action-console-runtime/src/",
+            "Kiboko\\Component\\Runtime\\Hook\\": "packages/hook-runtime/src/",
+            "Kiboko\\Component\\Runtime\\Pipeline\\": "packages/pipeline-console-runtime/src/",
+            "Kiboko\\Component\\Runtime\\Workflow\\": "packages/workflow-console-runtime/src/",
+            "Kiboko\\Component\\State\\": "packages/console-state/src/",
+            "Kiboko\\Component\\Workflow\\": "packages/workflow/src/",
+            "Kiboko\\Contract\\Action\\": "packages/action-contracts/src/",
+            "Kiboko\\Contract\\Bucket\\": "packages/bucket-contracts/src/",
+            "Kiboko\\Contract\\Pipeline\\": "packages/pipeline-contracts/src/",
+            "Kiboko\\Contract\\Satellite\\": "packages/satellite-contracts/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "functional\\Kiboko\\Component\\Flow\\Csv\\": "packages/csv-flow/tests/functional/",
+            "functional\\Kiboko\\Component\\Flow\\JSON\\": "packages/json-flow/tests/functional/",
+            "functional\\Kiboko\\Component\\Flow\\RabbitMQ\\": "packages/rabbitmq-flow/tests/functional/",
+            "functional\\Kiboko\\Component\\Flow\\SQL\\": "packages/sql-flow/tests/functional/",
+            "functional\\Kiboko\\Component\\Flow\\Spreadsheet\\": "packages/spreadsheet-flow/tests/functional/",
+            "functional\\Kiboko\\Component\\PHPUnitExtension\\": "packages/phpunit-extension/tests/functional/",
+            "integration\\Kiboko\\Component\\Flow\\RabbitMQ\\": "packages/rabbitmq-flow/tests/integration/",
+            "spec\\Kiboko\\Component\\PHPSpecExtension\\": "packages/phpspec-extension/spec/",
+            "unit\\Kiboko\\Component\\ETL\\Pipeline\\": "packages/pipeline/tests/unit/",
+            "unit\\Kiboko\\Component\\ETL\\Workflow\\": "packages/workflow/unit/",
+            "unit\\Kiboko\\Component\\Flow\\Csv\\": "packages/csv-flow/tests/unit/",
+            "unit\\Kiboko\\Component\\Flow\\RabbitMQ\\": "packages/rabbitmq-flow/tests/unit/",
+            "unit\\Kiboko\\Component\\Flow\\SQL\\": "packages/sql-flow/tests/unit/"
+        }
+    },
+    "replace": {
+        "php-etl/action": "self.version",
+        "php-etl/action-console-runtime": "self.version",
+        "php-etl/action-contracts": "self.version",
+        "php-etl/api-runtime": "self.version",
+        "php-etl/bucket": "self.version",
+        "php-etl/bucket-contracts": "self.version",
+        "php-etl/console-state": "self.version",
+        "php-etl/csv-flow": "self.version",
+        "php-etl/hook-runtime": "self.version",
+        "php-etl/json-flow": "self.version",
+        "php-etl/phpspec-extension": "self.version",
+        "php-etl/phpunit-extension": "self.version",
+        "php-etl/pipeline": "self.version",
+        "php-etl/pipeline-console-runtime": "self.version",
+        "php-etl/pipeline-contracts": "self.version",
+        "php-etl/rabbitmq-flow": "self.version",
+        "php-etl/satellite-contracts": "self.version",
+        "php-etl/spreadsheet-flow": "self.version",
+        "php-etl/sql-flow": "self.version",
+        "php-etl/workflow": "self.version",
+        "php-etl/workflow-console-runtime": "self.version"
+    },
+    "provide": {
+        "php-etl/pipeline-implementation": "0.5.0",
+        "php-etl/workflow-implementation": "0.2.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
