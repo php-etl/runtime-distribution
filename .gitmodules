@@ -16,12 +16,6 @@
 [submodule "packages/rabbitmq-flow"]
 	path = packages/rabbitmq-flow
 	url = git@github.com:php-etl/rabbitmq-flow.git
-[submodule "packages/promise-contracts"]
-	path = packages/promise-contracts
-	url = git@github.com:php-etl/promise-contracts.git
-[submodule "packages/promise"]
-	path = packages/promise
-	url = git@github.com:php-etl/promise.git
 [submodule "packages/pipeline-contracts"]
 	path = packages/pipeline-contracts
 	url = git@github.com:php-etl/pipeline-contracts.git
@@ -64,3 +58,15 @@
 [submodule "packages/api-runtime"]
 	path = packages/api-runtime
 	url = git@github.com:php-etl/api-runtime.git
+[submodule "packages/satellite-contracts"]
+	path = packages/satellite-contracts
+	url = git@github.com:php-etl/satellite-contracts.git
+[submodule "packages/action-contracts"]
+	path = packages/action-contracts
+	url = git@github.com:php-etl/action-contracts.git
+[submodule "packages/action"]
+	path = packages/action
+	url = git@github.com:php-etl/action.git
+[submodule "packages/action-console-runtime"]
+	path = packages/action-console-runtime
+	url = git@github.com:php-etl/action-console-runtime.git
