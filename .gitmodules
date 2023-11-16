@@ -31,12 +31,6 @@
 [submodule "packages/phpspec-extension"]
 	path = packages/phpspec-extension
 	url = git@github.com:php-etl/phpspec-extension.git
-[submodule "packages/metadata-contracts"]
-	path = packages/metadata-contracts
-	url = git@github.com:php-etl/metadata-contracts.git
-[submodule "packages/metadata"]
-	path = packages/metadata
-	url = git@github.com:php-etl/metadata.git
 [submodule "packages/json-flow"]
 	path = packages/json-flow
 	url = git@github.com:php-etl/json-flow.git
