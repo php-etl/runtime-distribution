@@ -1,123 +1,47 @@
-name: 'Packages Split'
-
 on:
   push:
+    # Only trigger for specific branches or changes in specific paths.
     branches:
-      - main
+      - '*'
+    paths:
+      - src/**
+    # Tag push events should be ignored, they will be handled with the create event below.
+    tags-ignore:
+      - '*'
+  create:
     tags:
       - '*'
-    pull_request: null
-    release:
-      types: [created]
-
-env:
-  GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+  delete:
+    tags:
+      - '*'
 
 jobs:
-  packages_split:
+  sync_commits:
     runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
-      matrix:
-        # define package to repository map
-        package:
-#          -
-#            local_path: 'action'
-#            split_repository: 'action'
-#          -
-#            local_path: 'action-console-runtime'
-#            split_repository: 'action-console-runtime'
-          -
-            local_path: 'action-contracts'
-            split_repository: 'action-contracts'
-#          -
-#            local_path: 'api-runtime'
-#            split_repository: 'api-runtime'
-#          -
-#            local_path: 'bucket'
-#            split_repository: 'bucket'
-#          -
-#            local_path: 'bucket-contracts'
-#            split_repository: 'bucket-contracts'
-#          -
-#            local_path: 'console-state'
-#            split_repository: 'console-state'
-#          -
-#            local_path: 'csv-flow'
-#            split_repository: 'csv-flow'
-#          -
-#            local_path: 'hook-runtime'
-#            split_repository: 'hook-runtime'
-#          -
-#            local_path: 'json-flow'
-#            split_repository: 'json-flow'
-#          -
-#            local_path: 'phpspec-extension'
-#            split_repository: 'phpspec-extension'
-#          -
-#            local_path: 'phpunit-extension'
-#            split_repository: 'phpunit-extension'
-#          -
-#            local_path: 'pipeline'
-#            split_repository: 'pipeline'
-#          -
-#            local_path: 'pipeline-console-runtime'
-#            split_repository: 'pipeline-console-runtime'
-#          -
-#            local_path: 'pipeline-contracts'
-#            split_repository: 'pipeline-contracts'
-#          -
-#            local_path: 'rabbitmq-flow'
-#            split_repository: 'rabbitmq-flow'
-#          -
-#            local_path: 'satellite-contracts'
-#            split_repository: 'satellite-contracts'
-#          -
-#            local_path: 'spreadsheet-flow'
-#            split_repository: 'spreadsheet-flow'
-#          -
-#            local_path: 'sql-flow'
-#            split_repository: 'sql-flow'
-#          -
-#            local_path: 'workflow'
-#            split_repository: 'workflow'
-#          -
-#            local_path: 'workflow-console-runtime'
-#            split_repository: 'workflow-console-runtime'
+    name: Sync commits
+    if: github.repository == 'php-etl/runtime-distribution' # Execute this workflow job only on the main repository.
     steps:
       -   uses: actions/checkout@v2
+          with:
+            persist-credentials: false
+            fetch-depth: 0
 
-      # no tag
-      -
-        if: "!startsWith(github.ref, 'refs/tags/')"
-        uses: "danharrin/monorepo-split-github-action@v2.3.0"
-        with:
-          # ↓ split "packages/easy-coding-standard" directory
-          package_directory: 'packages/${{ matrix.package.local_path }}'
+      # Add a personal access token to the repository secrets. This will allow the splitter action to push the new commits
+      -   uses: frankdejonge/use-github-token@1.0.2
+          with:
+            authentication: 'gplanchat:${{ secrets.PERSONAL_GITHUB_TOKEN }}'
+            user_name: 'Grégory Planchat'
+            user_email: 'gregory@kiboko.fr'
 
-          # ↓ into https://github.com/symplify/easy-coding-standard repository
-          repository_organization: 'php-etl'
-          repository_name: '${{ matrix.package.split_repository }}'
+      # Cache the splitsh executable to speedup future runs
+      -   name: Cache splitsh-lite
+          uses: actions/cache@v2
+          with:
+            path: './splitsh'
+            key: '${{ runner.os }}-splitsh-v101'
 
-          # ↓ the user signed under the split commit
-          user_name: 'GitHub Action <actions@github.com>'
-          user_email: 'action@github.com'
-
-      # with tag
-      -
-        if: "startsWith(github.ref, 'refs/tags/')"
-        uses: "danharrin/monorepo-split-github-action@v2.3.0"
-        with:
-          tag: ${GITHUB_REF#refs/tags/}
-
-          # ↓ split "packages/easy-coding-standard" directory
-          package_directory: 'packages/${{ matrix.package.local_path }}'
-
-          # ↓ into https://github.com/symplify/easy-coding-standard repository
-          repository_organization: 'php-etl'
-          repository_name: '${{ matrix.package.split_repository }}'
-
-          # ↓ the user signed under the split commit
-          user_name: 'GitHub Action <actions@github.com>'
-          user_email: 'action@github.com'
+      # Sync commits and tags for the configured subtree splits
+      -   name: subtree split
+          uses: acrobat/subtree-splitter@v1.1.3
+          with:
+            config-path: .github/subtree-splitter-config.json # Reference the location where you saved your config file

@@ -1,0 +1,9 @@
+{
+  "subtree-splits": [
+    {
+      "name": "action-contracts",
+      "directory": "packages/action-contracts",
+      "target": "git@github.com:php-etl/action-contracts.git"
+    }
+  ]
+}
