@@ -55,9 +55,6 @@
 [submodule "packages/satellite-contracts"]
 	path = packages/satellite-contracts
 	url = git@github.com:php-etl/satellite-contracts.git
-[submodule "packages/action-contracts"]
-	path = packages/action-contracts
-	url = git@github.com:php-etl/action-contracts.git
 [submodule "packages/action"]
 	path = packages/action
 	url = git@github.com:php-etl/action.git
